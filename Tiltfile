@@ -1,0 +1,10 @@
+docker_compose("./docker-compose.yml")
+docker_build(
+    ref="plotly-dash-app",
+    context=".",
+    target="dev",
+)
+dc_resource(
+    "dash",
+    trigger_mode=TRIGGER_MODE_MANUAL,
+)

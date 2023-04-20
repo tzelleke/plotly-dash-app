@@ -1,0 +1,8 @@
+.dockerignore
+.github/
+.idea/
+.env*
+Dockerfile
+Tiltfile
+cloud-run.yml
+docker-compose.yml

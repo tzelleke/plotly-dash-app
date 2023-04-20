@@ -1,0 +1,22 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: plotly-dash-app
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '1'
+        run.googleapis.com/startup-cpu-boost: 'true'
+    spec:
+      containers:
+      - image: europe-west3-docker.pkg.dev/coastal-epigram-384112/docker/plotly-dash-app@sha256:2b8ba0afc4600483cb4d74bdb6194ed590a79b341d93a5a2e72e830185a8698e
+        ports:
+        - containerPort: '80'
+        resources:
+          limits:
+            cpu: '1'
+            memory: '512Mi'
+        env:
+          name: WEB_CONCURRENCY
+          value: '3'
