@@ -13,3 +13,16 @@ def toggle_classes(class_name: str, *classes_: str) -> str:
         str: String of classes separated by spaces.
     """
     return " ".join(set(class_name.split()).symmetric_difference(classes_))
+
+
+@cache
+def classes(*classes_: str) -> str:
+    """Return a string of classes separated by spaces.
+
+    Args:
+        *classes_ (str): Classes to join.
+
+    Returns:
+        str: String of classes separated by spaces.
+    """
+    return " ".join(classes_)

@@ -1,4 +1,4 @@
-from app.util import toggle_classes
+from app.util import classes, toggle_classes
 
 
 def _has_only_classes(class_name: str, expected_classes_: str) -> bool:
@@ -20,3 +20,8 @@ def test_toggle_classes():
         toggle_classes("a b c"),
         "a b c",
     )
+
+
+def test_classes_():
+    assert classes() == ""
+    assert classes("a", "b", "c") == "a b c"
