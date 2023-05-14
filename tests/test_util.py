@@ -1,4 +1,19 @@
-from app.util import classes, toggle_classes
+from app.util import aio_id_resolver, classes, toggle_classes
+
+
+def test_aio_id_resolver():
+    id_resolver = aio_id_resolver("TestComponent", ["subcomponent1", "subcomponent2"])
+
+    assert id_resolver.subcomponent_1("id1") == {
+        "component": "TestComponent",
+        "subcomponent": "subcomponent1",
+        "id": "id1",
+    }
+    assert id_resolver.subcomponent_2("id2") == {
+        "component": "TestComponent",
+        "subcomponent": "subcomponent2",
+        "id": "id2",
+    }
 
 
 def _has_only_classes(class_name: str, expected_classes_: str) -> bool:
